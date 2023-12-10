@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
+
 contract BlockBattle {
 
     address owner;
@@ -16,13 +17,13 @@ contract BlockBattle {
         owner = msg.sender;
     }
 
-    function setLevel(address _address, uint256 _level) public {
+    function setLevel(uint256 _level) public {
         // require(msg.sender == owner, "Only owner");
-        userData[_address] = GameData(_level);
+        userData[msg.sender] = GameData(_level);
     }
 
-    function getLevel(address _address) public view returns(uint) {
-        GameData memory data = userData[_address];
+    function getLevel() public view returns(uint) {
+        GameData memory data = userData[msg.sender];
         return data.level; 
     }
     
